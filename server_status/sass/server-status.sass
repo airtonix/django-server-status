@@ -1,0 +1,44 @@
+@import normalize
+@import foundation
+@import fontawesome/font-awesome
+@import mixins/responsive
+@import mixins/buttons
+
+
+body.service-status-page
+
+    #status-list
+
+        width: 100%
+
+        li
+            &.status-ok
+                .name
+                    color: #666
+
+                .status
+                    color: $success-color
+                    &:after
+                        +icon($ok)
+
+            &.status-unavailable
+
+                .status
+                    color: $warning-color
+                    &:after
+                        +icon($exclamation)
+
+            &.status-unexpected-result
+                .status
+                    color: $alert-color
+                    &:after
+                        +icon($fire-extinguisher)
+
+            .name
+                float: left
+                color: #ccc
+
+            .status
+                float: right
+                &:after
+                    margin-left: 1em

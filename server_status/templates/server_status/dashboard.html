@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% load formatting_tags i18n %}
+
+{% block page-title %}{% trans "Service Health" %}{% endblock %}
+{% block html-title %}{% trans "Service Health" %}{% endblock %}
+{% block body-class %}{{block.super}} service-status-page page-title-centered{% endblock %}
+
+{% block page-content %}
+<div class="large-6 columns large-centered">
+    {% regroup Reports by group as grouped_reports %}
+    {% for report_group in grouped_reports %}
+    <h4>{{ report_group.grouper }}</h4>
+    <ul id="status-list" class="button-group simple-outline transparent vertical">
+        {% for report in report_group.list %}
+        <li class="status-{{ report.status.code }}">
+            <a href="#" class="button row">
+                <b class="name">{{ report.name }}</b>
+                <em class="status">{{ report.status.message }}</em>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}

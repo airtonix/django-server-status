@@ -33,20 +33,18 @@ class BasePlugin(object):
         if not getattr(self, "_status", False):
             try:
                 result = self.check_status()
+                print result
 
                 if isinstance(result, exceptions.ServiceException):
                     raise result
 
-                if isinstance(result, bool) and result is False:
+                elif isinstance(result, bool) and result is False:
                     raise exceptions.ServiceUnstable
-
+    
                 setattr(self, '_status', exceptions.ServiceOk)
 
             except exceptions.BadStatusCases as error:
                 setattr(self, "_status", error)
-
-            except Exception as error:
-                print error
 
         return self._status
 

@@ -26,6 +26,11 @@ class ServiceUnavailable(ServiceException):
     message = _('Unavailable')
 
 
+class ServiceReturnedUnexpectedResult(ServiceException):
+    code = 'unexpected'
+    message = _('Unexpected Results')
+
+
 class ServiceUnstable(ServiceException):
     code = 'unstable'
     message = _('Unstable')

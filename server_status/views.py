@@ -5,6 +5,8 @@ from django.http import HttpResponse, HttpResponseServerError
 from .registry import plugins
 
 
+print plugins._registry.keys()
+
 class ServerStatusDashboard(TemplateView):
     template_name = "server_status/dashboard.html"
 

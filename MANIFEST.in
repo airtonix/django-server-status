@@ -1,2 +1,3 @@
-recursive-include server_status/templates *.html
+recursive-include server_status/templates *
 recursive-include server_status/static *.css
+include README.md
